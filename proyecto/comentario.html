@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Comentarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .comment-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .comment-form h2 {
+            margin-bottom: 20px;
+        }
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .comment-form button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .comment-form button:hover {
+            background: #218838;
+        }
+        .comments-section {
+            margin-top: 20px;
+        }
+        .comment {
+            background: #e9ecef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="comment-form">
+        <h2>Deja tu comentario</h2>
+        <input type="text" id="name" placeholder="Tu nombre" required>
+        <textarea id="comment" placeholder="Tu comentario" required></textarea>
+        <button onclick="submitComment()">Enviar</button>
+        <div class="comments-section" id="comments-section"></div>
+    </div>
+
+    <script>
+        function submitComment() {
+            const name = document.getElementById('name').value;
+            const comment = document.getElementById('comment').value;
+
+            if (name && comment) {
+                const commentSection = document.getElementById('comments-section');
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment');
+                newComment.innerHTML = `<strong>${name}</strong><p>${comment}</p>`;
+                commentSection.appendChild(newComment);
+
+                document.getElementById('name').value = '';
+                document.getElementById('comment').value = '';
+            } else {
+                alert('Por favor, completa todos los campos.');
+            }
+        }
+    </script>
+    
+</body>
+</html>
